@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:background="@drawable/rectangle_button"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="20dp">
+
+        <TextView
+            android:id="@+id/tv_code_genset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kode Genset"
+            android:textColor="#007F7B"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_inspector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inspektur"
+            android:textColor="#007F7B"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_code_genset"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_typeGenst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipe"
+            android:textColor="#007F7B"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_inspector"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal"
+            android:textColor="#007F7B"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_typeGenst"
+            app:layout_constraintStart_toStartOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

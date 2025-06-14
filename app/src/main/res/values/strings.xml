@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">GENST</string>
+    <string name="title_home">Menu Utama</string>
+    <string name="title_riwayatL">Riwayat Laporan</string>
+    <string name="title_profil">Profil</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_inspeksi">Inspeksi</string>
+    <string name="title_activity_riwayat">Riwayat Laporan</string>
+    <string name="title_activity_profil">Profil</string>
+    <string name="title_activity_pengaturan">Pengaturan</string>
+    <string name="title_activity_bahasa">Bahasa</string>
+    <string name="title_activity_riwayat_inspeksi">Riwayat Inspeksi</string>
+    <!-- res/values/strings.xml -->
+    <string name="clear">CLEAR</string>
+    <string name="save">SAVE</string>
+
+</resources>

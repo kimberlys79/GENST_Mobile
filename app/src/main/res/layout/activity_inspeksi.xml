@@ -1,0 +1,1415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".view.ui.inspeksipage.InspeksiActivity">
+
+    <ImageView
+        android:id="@+id/iv_topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/topbar"
+        android:padding="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ic_inspeksi"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="25dp"
+        android:src="@drawable/ic_inspection_putih"
+        app:layout_constraintStart_toStartOf="@id/iv_topBar"
+        app:layout_constraintTop_toTopOf="@id/iv_topBar"
+        app:layout_constraintBottom_toBottomOf="@id/iv_topBar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inspeksi"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@id/ic_inspeksi"
+        app:layout_constraintTop_toTopOf="@id/iv_topBar"
+        app:layout_constraintBottom_toBottomOf="@id/iv_topBar"/>
+
+    <ScrollView
+        android:id="@+id/sv_inspeksi"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/iv_topBar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_inspektur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Inspektur"
+                    android:textColor="#003B46"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/et_inspektur"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginTop="14dp"
+                    android:background="#C4DFE6"
+                    android:hint="Inspektur"
+                    android:textColor="#003B46"
+                    app:layout_constraintStart_toEndOf="@id/tv_inspektur"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_tglWeek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Tanggal &amp; Week"
+                    android:textColor="#003B46"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_inspektur" />
+
+                <EditText
+                    android:id="@+id/et_tgl"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#C4DFE6"
+                    android:hint="Tanggal &amp; Week"
+                    android:textColor="#003B46"
+                    app:layout_constraintStart_toEndOf="@id/tv_tglWeek"
+                    app:layout_constraintTop_toBottomOf="@id/et_inspektur" />
+
+                <DatePicker
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#007F7B"
+                    android:calendarViewShown="true"
+                    app:layout_constraintStart_toEndOf="@id/et_tgl"
+                    app:layout_constraintTop_toBottomOf="@id/et_inspektur" />
+
+                <TextView
+                    android:id="@+id/tv_ecp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Emergency Control Panel"
+                    android:textAlignment="center"
+                    android:textColor="#003B46"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_tgl" />
+
+                <TextView
+                    android:id="@+id/tv_lockEng"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Lock Engine"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ecp" />
+
+                <RadioGroup
+                    android:id="@+id/rg_onoff_lockeng"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/tv_lockEng"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ecp">
+
+                    <RadioButton
+                        android:id="@+id/rb_lockEngOn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ON"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:id="@+id/rb_lockEngOff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="OFF"
+                        android:textColor="#003B46" />
+
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/et_lockEng"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="184dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#C4DFE6"
+                    android:hint="Keterangan"
+                    android:textColor="#003B46"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rg_onoff_lockeng" />
+
+                <TextView
+                    android:id="@+id/tv_cirBreak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="45dp"
+                    android:text="Circuit Breaker"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_lockEng" />
+
+                <RadioGroup
+                    android:id="@+id/rg_onoff_cirBreak"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/tv_cirBreak"
+                    app:layout_constraintTop_toBottomOf="@id/rg_onoff_lockeng">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ON"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:id="@+id/rb_cirBreak_off"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="OFF"
+                        android:textColor="#003B46" />
+
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/et_cirBreak"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="184dp"
+                    android:layout_marginTop="40dp"
+                    android:background="#C4DFE6"
+                    android:hint="Keterangan"
+                    android:textColor="#003B46"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_lockEng" />
+
+                <TextView
+                    android:id="@+id/tv_fuelGen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="45dp"
+                    android:text="Fuel Generator"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_cirBreak" />
+
+                <RadioGroup
+                    android:id="@+id/rg_fuelG"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/tv_fuelGen"
+                    app:layout_constraintTop_toBottomOf="@id/rg_onoff_cirBreak">
+
+                    <RadioButton
+                        android:id="@+id/rb_emptyFuel"
+                        android:layout_width="72dp"
+                        android:layout_height="28dp"
+                        android:text="Empty"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:id="@+id/rb_mediumFuel"
+                        android:layout_width="83dp"
+                        android:layout_height="35dp"
+                        android:text="Medium"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:id="@+id/rb_fullFuel"
+                        android:layout_width="65dp"
+                        android:layout_height="35dp"
+                        android:text="Full"
+                        android:textColor="#003B46" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/tv_oGen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Oil Generator"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_fuelGen" />
+
+                <TextView
+                    android:id="@+id/tv_level_oilGen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Level"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_oGen" />
+
+                <RadioGroup
+                    android:id="@+id/rg_levelOil"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="65dp"
+                    android:layout_marginTop="37dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/tv_level_oilGen"
+                    app:layout_constraintTop_toBottomOf="@id/rg_fuelG">
+
+                    <RadioButton
+                        android:id="@+id/rb_minOil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Min"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:id="@+id/rb_maxOil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Max"
+                        android:textColor="#003B46" />
+
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/et_level_oilG"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="184dp"
+                    android:background="#C4DFE6"
+                    android:hint="Keterangan"
+                    android:textColor="#003B46"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rg_levelOil" />
+
+                <TextView
+                    android:id="@+id/tv_color_oilGen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="50dp"
+                    android:text="Color"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_level_oilGen" />
+
+                <RadioGroup
+                    android:id="@+id/rg_colorOil"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="65dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/tv_color_oilGen"
+                    app:layout_constraintTop_toBottomOf="@id/et_level_oilG">
+
+                    <RadioButton
+                        android:id="@+id/rb_paleOil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pale"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:id="@+id/rb_darkOil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16.5dp"
+                        android:text="Dark"
+                        android:textColor="#003B46" />
+
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/et_color_oilG"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="184dp"
+                    android:layout_marginTop="0.5dp"
+                    android:background="#C4DFE6"
+                    android:hint="Keterangan"
+                    android:textColor="#003B46"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rg_colorOil" />
+
+                <TextView
+                    android:id="@+id/tv_radWater"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="60dp"
+                    android:text="Radiator Water"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_color_oilGen" />
+
+                <RadioGroup
+                    android:id="@+id/rg_radWater"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="17.5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/tv_radWater"
+                    app:layout_constraintTop_toBottomOf="@id/et_color_oilG">
+
+                    <RadioButton
+                        android:id="@+id/rb_emptyRad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Empty"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:id="@+id/rb_medRad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="Medium"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:id="@+id/rb_fullRad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Full"
+                        android:textColor="#003B46" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/tv_fuelPump"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Fuel Pump"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_radWater" />
+
+                <RadioGroup
+                    android:id="@+id/rg_fuelPump"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="51dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/tv_fuelPump"
+                    app:layout_constraintTop_toBottomOf="@id/rg_radWater">
+
+                    <RadioButton
+                        android:id="@+id/rb_emptyman"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Manual"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:id="@+id/rb_offFP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OFF"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:id="@+id/rb_autoFP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:text="Auto"
+                        android:textColor="#003B46" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/tv_voltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="17dp"
+                    android:text="Voltmeter"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_fuelPump" />
+
+                <TextView
+                    android:id="@+id/tv_brVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="15dp"
+                    android:text="BR"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_voltmeter" />
+
+                <Spinner
+                    android:id="@+id/spinner_brVoltmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="46.5dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_brVoltmeter"
+                    app:layout_constraintTop_toBottomOf="@id/rg_fuelPump" />
+
+
+                <TextView
+                    android:id="@+id/tv_ybVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="YB"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_brVoltmeter" />
+
+                <Spinner
+                    android:id="@+id/spinner_ybVoltmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_ybVoltmeter"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_brVoltmeter" />
+
+                <TextView
+                    android:id="@+id/tv_ryVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="RY"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ybVoltmeter" />
+
+                <Spinner
+                    android:id="@+id/spinner_ryVoltmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_ryVoltmeter"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ybVoltmeter" />
+
+                <TextView
+                    android:id="@+id/tv_rnVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="RN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ryVoltmeter" />
+
+                <Spinner
+                    android:id="@+id/spinner_rnVoltmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    app:layout_constraintStart_toEndOf="@+id/tv_rnVoltmeter"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ryVoltmeter" />
+
+                <TextView
+                    android:id="@+id/tv_ynVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="YN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_rnVoltmeter" />
+
+                <Spinner
+                    android:id="@+id/spinner_ynVoltmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_ynVoltmeter"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_rnVoltmeter" />
+
+                <TextView
+                    android:id="@+id/tv_bnVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="BN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ynVoltmeter" />
+
+                <Spinner
+                    android:id="@+id/spinner_bnVoltmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_bnVoltmeter"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ynVoltmeter" />
+
+                <EditText
+                    android:id="@+id/et_keterangan_voltmeter"
+                    android:layout_width="245dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#C4DFE6"
+                    android:hint="Keterangan"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_bnVoltmeter"/>
+
+                <TextView
+                    android:id="@+id/tv_dutySelector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="50dp"
+                    android:text="Duty Selector"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_bnVoltmeter" />
+
+                <TextView
+                    android:id="@+id/tv_br_dutS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="15dp"
+                    android:text="BR"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_dutySelector" />
+
+                <Spinner
+                    android:id="@+id/spinner_br_dutySelector"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="54.5dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_br_dutS"
+                    app:layout_constraintTop_toBottomOf="@id/et_keterangan_voltmeter" />
+
+                <TextView
+                    android:id="@+id/tv_yb_dutS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="YB"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_br_dutS" />
+
+                <Spinner
+                    android:id="@+id/spinner_yb_dutS"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_yb_dutS"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_br_dutySelector" />
+
+                <TextView
+                    android:id="@+id/tv_ry_dutS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="RY"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_yb_dutS" />
+
+                <Spinner
+                    android:id="@+id/spinner_ry_dutS"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_ry_dutS"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_yb_dutS" />
+
+                <TextView
+                    android:id="@+id/tv_rn_dutS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="RN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ry_dutS" />
+
+                <Spinner
+                    android:id="@+id/spinner_rn_dutS"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    app:layout_constraintStart_toEndOf="@+id/tv_rn_dutS"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ry_dutS" />
+
+                <TextView
+                    android:id="@+id/tv_yn_dutS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="YN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_rn_dutS" />
+
+                <Spinner
+                    android:id="@+id/spinner_yn_dutS"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_yn_dutS"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_rn_dutS" />
+
+                <TextView
+                    android:id="@+id/tv_bn_dutS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="BN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_yn_dutS" />
+
+                <Spinner
+                    android:id="@+id/spinner_bn_dutS"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_bn_dutS"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_yn_dutS" />
+
+                <EditText
+                    android:id="@+id/et_keterangan_dutySelector"
+                    android:layout_width="245dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#C4DFE6"
+                    android:hint="Keterangan"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_bn_dutS" />
+
+                <TextView
+                    android:id="@+id/tv_ammeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="52dp"
+                    android:text="Ammeter"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_bn_dutS" />
+
+                <TextView
+                    android:id="@+id/tv_brAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="15dp"
+                    android:text="BR"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ammeter" />
+
+                <Spinner
+                    android:id="@+id/spinner_brAmmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="54dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_brAmmeter"
+                    app:layout_constraintTop_toBottomOf="@id/et_keterangan_dutySelector" />
+
+
+                <TextView
+                    android:id="@+id/tv_ybAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="YB"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_brAmmeter" />
+
+                <Spinner
+                    android:id="@+id/spinner_ybAmmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_ybAmmeter"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_brAmmeter" />
+
+                <TextView
+                    android:id="@+id/tv_ryAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="RY"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ybAmmeter" />
+
+                <Spinner
+                    android:id="@+id/spinner_ryAmmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_ryAmmeter"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ybAmmeter" />
+
+                <TextView
+                    android:id="@+id/tv_rnAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="RN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ryAmmeter" />
+
+                <Spinner
+                    android:id="@+id/spinner_rnAmmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="93dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    app:layout_constraintStart_toEndOf="@+id/tv_rnAmmeter"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ryAmmeter" />
+
+                <TextView
+                    android:id="@+id/tv_ynAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="YN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_rnAmmeter" />
+
+                <Spinner
+                    android:id="@+id/spinner_ynAmmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="93dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_ynAmmeter"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_rnAmmeter" />
+
+                <TextView
+                    android:id="@+id/tv_bnAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="BN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ynAmmeter" />
+
+                <Spinner
+                    android:id="@+id/et_bnAmmeter"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="93dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_bnAmmeter"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ynAmmeter" />
+
+                <EditText
+                    android:id="@+id/et_keterangan_Ammeter"
+                    android:layout_width="245dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#C4DFE6"
+                    android:hint="Keterangan"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_bnAmmeter" />
+
+                <TextView
+                    android:id="@+id/tv_battCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="55dp"
+                    android:text="Battery Charger"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_bnAmmeter" />
+
+                <RadioGroup
+                    android:id="@+id/rg_battCharg"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="7dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/tv_battCharg"
+                    app:layout_constraintTop_toBottomOf="@id/et_keterangan_Ammeter">
+
+                    <RadioButton
+                        android:id="@+id/rb_on_battCharg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ON"
+                        android:textColor="#003B46" />
+
+
+                    <RadioButton
+                        android:id="@+id/rb_off_battCharg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OFF"
+                        android:textColor="#003B46" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/tv_brbattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="15dp"
+                    android:text="BR"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_battCharg" />
+
+                <Spinner
+                    android:id="@+id/spinner_brbattCharg"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="7.5dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_brbattCharg"
+                    app:layout_constraintTop_toBottomOf="@id/rg_battCharg" />
+
+                <TextView
+                    android:id="@+id/tv_ybbattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="YB"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_brbattCharg" />
+
+                <Spinner
+                    android:id="@+id/spinner_ybbattCharg"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="12.5dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_ybbattCharg"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_brbattCharg" />
+
+                <TextView
+                    android:id="@+id/tv_rybattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="RY"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ybbattCharg" />
+
+                <Spinner
+                    android:id="@+id/spinner_rybattCharg"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="95dp"
+                    android:layout_marginTop="12.5dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_rybattCharg"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ybbattCharg" />
+
+                <TextView
+                    android:id="@+id/tv_rnbattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="RN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_rybattCharg" />
+
+                <Spinner
+                    android:id="@+id/spinner_rnbattCharg"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="93dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#C4DFE6"
+                    app:layout_constraintStart_toEndOf="@+id/tv_rnbattCharg"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_rybattCharg" />
+
+                <TextView
+                    android:id="@+id/tv_ynbattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="YN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_rnbattCharg" />
+
+                <Spinner
+                    android:id="@+id/spinner_ynbattCharg"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="93dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_ynbattCharg"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_rnbattCharg" />
+
+                <TextView
+                    android:id="@+id/tv_bnbattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="BN"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ynbattCharg" />
+
+                <Spinner
+                    android:id="@+id/spinner_bnbattCharg"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="93dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_bnbattCharg"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ynbattCharg" />
+
+                <EditText
+                    android:id="@+id/et_keterangan_battCharg"
+                    android:layout_width="245dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#C4DFE6"
+                    android:hint="Keterangan"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_bnbattCharg" />
+
+                <TextView
+                    android:id="@+id/tv_ecu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="45dp"
+                    android:text="ECU"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_bnbattCharg" />
+
+                <Spinner
+                    android:id="@+id/sp_ecu"
+                    android:layout_width="100dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="50dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@+id/tv_ecu"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_bnbattCharg" />
+
+                <EditText
+                    android:id="@+id/et_ecu"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="45dp"
+                    android:background="#C4DFE6"
+                    android:hint="Keterangan"
+                    android:textColor="#003B46"
+                    app:layout_constraintStart_toEndOf="@+id/sp_ecu"
+                    app:layout_constraintTop_toBottomOf="@+id/et_keterangan_battCharg" />
+
+                <TextView
+                    android:id="@+id/tv_battery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Battery"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ecu" />
+
+                <RadioGroup
+                    android:id="@+id/rg_battery"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="81dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/tv_battery"
+                    app:layout_constraintTop_toBottomOf="@id/sp_ecu">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="No"
+                        android:textColor="#003B46" />
+
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/et_catatan"
+                    android:layout_width="245dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#C4DFE6"
+                    android:hint="Catatan"
+                    android:textColor="#003B46"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rg_battery" />
+
+                <!-- Layout for Upload Section -->
+                <TextView
+                    android:id="@+id/tvUploadPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="130dp"
+                    android:text="Unggah Foto"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_battery" />
+
+                <ImageView
+                    android:id="@+id/iv_uploadPhoto"
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#C4DFE6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUploadPhoto" />
+
+                <ImageView
+                    android:id="@+id/iv_icon_pin"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="35dp"
+                    android:background="@drawable/ic_pin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUploadPhoto" />
+
+                <TextView
+                    android:id="@+id/tv_kondisi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="13dp"
+                    android:text="Kondisi Keseluruhan"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_uploadPhoto" />
+
+                <Spinner
+                    android:id="@+id/sp_kondisi"
+                    android:layout_width="170dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#C4DFE6"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toEndOf="@id/tv_kondisi"
+                    app:layout_constraintTop_toBottomOf="@id/iv_uploadPhoto" />
+
+                <TextView
+                    android:id="@+id/tv_genset_beroperasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Genset aman\nuntuk beroperasi"
+                    android:textColor="#003B46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sp_kondisi" />
+
+                <RadioGroup
+                    android:id="@+id/rg_genset_beroperasi"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="67dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/tv_genset_beroperasi"
+                    app:layout_constraintTop_toBottomOf="@id/sp_kondisi">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:textColor="#003B46" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="No"
+                        android:textColor="#003B46" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/tv_ttd_inspektur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:text="TTD Inspektur"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_genset_beroperasi" />
+
+                <ImageView
+                    android:id="@+id/iv_ttd_inspektur"
+                    android:layout_width="200dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#C4DFE6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ttd_inspektur"/>
+
+                <ImageView
+                    android:id="@+id/iv_icon_add"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="105dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/ic_add"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ttd_inspektur" />
+
+                <TextView
+                    android:id="@+id/tv_maintenance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Maintenance by MEM"
+                    android:textColor="#003B46"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_ttd_inspektur" />
+
+                <TextView
+                    android:id="@+id/tv_weekMaintenance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Week"
+                    android:textColor="#003B46"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_maintenance" />
+
+                <EditText
+                    android:id="@+id/et_weekMaintenance"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="125dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#C4DFE6"
+                    android:hint="Week"
+                    android:textAlignment="center"
+                    android:textColor="#003B46"
+                    app:layout_constraintStart_toEndOf="@id/tv_weekMaintenance"
+                    app:layout_constraintTop_toBottomOf="@id/tv_maintenance" />
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="25dp"
+                    android:backgroundTint="#007F7B"
+                    android:text="Submit"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_weekMaintenance" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

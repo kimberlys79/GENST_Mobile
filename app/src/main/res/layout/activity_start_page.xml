@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".view.ui.startpage.startPage">
+
+    <ImageView
+        android:id="@+id/iv_start_page"
+        android:layout_width="411dp"
+        android:layout_height="350dp"
+        android:background="@drawable/start_page"
+        android:src="@drawable/logo_inspect_genset"
+        android:padding="110dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_daftar"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:text="Daftar"
+        app:cornerRadius="8dp"
+        app:backgroundTint="#007f7b"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_start_page"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_masuk"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="45dp"
+        android:text="Masuk"
+        android:textColor="#007F7B"
+        app:cornerRadius="8dp"
+        app:strokeWidth="2dp"
+        app:backgroundTint="@android:color/transparent"
+        app:strokeColor="#007F7B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_daftar" />
+
+    <ImageView
+        android:id="@+id/iv_logo_vale"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/logo_vale"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_masuk" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
