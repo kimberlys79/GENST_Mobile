@@ -18,14 +18,15 @@ import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.example.genst.R
 import com.example.genst.data.result.Results
 import com.example.genst.databinding.ActivityInspeksiBinding
 import com.example.genst.view.ui.MainActivity
+import com.example.genst.view.ui.notification.NotificationViewModel
 import com.example.genst.view.utils.FactoryViewModel
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -40,7 +41,12 @@ import java.util.Calendar
 @Suppress("DEPRECATION")
 class InspeksiActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInspeksiBinding
-    private lateinit var viewModel: InspeksiViewModel
+    private val inspeksiViewModel: InspeksiViewModel by viewModels {
+        FactoryViewModel.getInstance(this)
+    }
+    private val notificationViewModel: NotificationViewModel by viewModels {
+        FactoryViewModel.getInstance(this)
+    }
 
     private val requestCamera = 1
     private val requestGallery = 2
@@ -64,11 +70,6 @@ class InspeksiActivity : AppCompatActivity() {
             )
             insets
         }
-
-        viewModel = ViewModelProvider(
-            this,
-            FactoryViewModel.getInstance(this)
-        )[InspeksiViewModel::class.java]
 
         setupDropdowns()
         setupListeners()
@@ -396,7 +397,7 @@ class InspeksiActivity : AppCompatActivity() {
 
 
         // Submit ke ViewModel
-        viewModel.createReport(
+        inspeksiViewModel.createReport(
             lockEngine = lockEngine.toRequestBody(),
             lockEngineKeterangan = binding.etLockEng.text.toString().toRequestBody(),
             circuitBreaker = circuitBreaker.toRequestBody(),
@@ -657,9 +658,10 @@ class InspeksiActivity : AppCompatActivity() {
     }
 
     private fun uploadReportObserver() {
-        viewModel.createReport.observe(this) { result ->
+        inspeksiViewModel.createReport.observe(this) { result ->
             when (result) {
                 is Results.Success -> {
+                    createNotification()
                     Toast.makeText(this, "Laporan berhasil dikirim", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
@@ -679,6 +681,34 @@ class InspeksiActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun createNotification() {
+        val generatorName = intent.getStringExtra(GENERATOR_NAME) ?: "-"
+        val inspectorName = binding.etInspektur.text.toString()
+
+        val title = "Laporan Inspeksi $generatorName"
+        val message = "Inspeksi generator $generatorName telah selesai dilakukan oleh $inspectorName"
+
+        notificationViewModel.sendNotification(title, message)
+
+        // Observe untuk memastikan kirim notifikasi berhasil / gagal
+        notificationViewModel.createNotification.observe(this) { result ->
+            when (result) {
+                is Results.Success -> {
+                    Toast.makeText(this, "Notifikasi berhasil dikirim", Toast.LENGTH_SHORT).show()
+                }
+
+                is Results.Error -> {
+                    Toast.makeText(this, "Gagal mengirim notifikasi: ${result.error}", Toast.LENGTH_SHORT).show()
+                }
+
+                is Results.Loading -> {
+                    // opsional: tampilkan loading
+                }
+            }
+        }
+    }
+
 
     private fun bitmapToRequestBody(bitmap: Bitmap, filename: String): RequestBody {
         val bos = ByteArrayOutputStream()

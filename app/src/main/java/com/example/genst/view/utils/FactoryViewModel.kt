@@ -9,6 +9,7 @@ import com.example.genst.view.ui.home.HomeViewModel
 import com.example.genst.view.ui.inspeksipage.InspeksiViewModel
 import com.example.genst.view.ui.laporaninspeksi.LaporanViewModel
 import com.example.genst.view.ui.authentication.AuthenticationViewModel
+import com.example.genst.view.ui.notification.NotificationViewModel
 import com.example.genst.view.ui.profil.ProfilViewModel
 import com.example.genst.view.ui.riwayatlaporan.RiwayatLaporanViewModel
 
@@ -41,6 +42,10 @@ class FactoryViewModel (
 
             modelClass.isAssignableFrom(RiwayatLaporanViewModel::class.java) ->{
                 RiwayatLaporanViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(NotificationViewModel::class.java) -> {
+                NotificationViewModel(repository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
