@@ -21,5 +21,10 @@
     <!-- res/values/strings.xml -->
     <string name="clear">CLEAR</string>
     <string name="save">SAVE</string>
+    <string name="pdf_inspektur">Inspektur : %s</string>
+    <string name="pdf_tanggal">Tanggal : %s</string>
+    <string name="pdf_emergency_control_panel">Emergency Control Panel</string>
+    <string name="pdf_lock_engine">Lock Engine</string>
+    <string name="generator_code_name">Generator : %s</string>
 
 </resources>

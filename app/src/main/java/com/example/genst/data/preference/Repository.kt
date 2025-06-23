@@ -19,6 +19,8 @@ import com.example.genst.data.genstresponse.UpdateUserResponse
 import com.example.genst.data.result.Results
 import com.example.genst.data.retrofit.ServiceApi
 import kotlinx.coroutines.flow.Flow
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -53,7 +55,10 @@ class Repository private constructor(
                     email = it?.email,
                     badgeNumber = it?.badgeNumber
                 )
-                Log.d("Repository", "Saved User in Session: ${it?.id}, token=${it?.token}, email=${it?.email}, badgeNumber=${it?.badgeNumber}")
+                Log.d(
+                    "Repository",
+                    "Saved User in Session: ${it?.id}, token=${it?.token}, email=${it?.email}, badgeNumber=${it?.badgeNumber}"
+                )
             }
             Log.d("Repository", "Login Success")
             loginResponse
@@ -185,7 +190,7 @@ class Repository private constructor(
             emit(Results.Success(response))
         } catch (e: Exception) {
             Log.e("Repository", "Error Get Report Detail: ${e.localizedMessage}", e)
-            emit(Results.Error(e.message?: "Unknown error occured"))
+            emit(Results.Error(e.message ?: "Unknown error occured"))
         }
     }
 
@@ -205,72 +210,125 @@ class Repository private constructor(
 
     suspend fun createReport(
         token: String,
-        lockEngine: String,
-        lockEngineKeterangan: String,
-        circuitBreaker: String,
-        circuitBreakerKeterangan: String,
-        fuelGenerator: String,
-        oilGeneratorLevel: String,
-        oilGeneratorLevelKeterangan: String,
-        oilGeneratorColor: String,
-        oilGeneratorColorKeterangan: String,
-        radiatorWater: String,
-        fuelPump: String,
-        voltmeterBR: Int,
-        voltmeterYB: Int,
-        voltmeterRY: Int,
-        voltmeterRN: Int,
-        voltmeterYN: Int,
-        voltmeterBN: Int,
-        voltmeterKeterangan: String,
-        ammeterBR: Int,
-        ammeterYB: Int,
-        ammeterRY: Int,
-        ammeterRN: Int,
-        ammeterYN: Int,
-        ammeterBN: Int,
-        ammeterKeterangan: String,
-        batteryCharger: String,
-        batteryChargerBR: Int,
-        batteryChargerYB: Int,
-        batteryChargerRY: Int,
-        batteryChargerRN: Int,
-        batteryChargerYN: Int,
-        batteryChargerBN: Int,
-        batteryChargerKeterangan: String,
-        ECU: String,
-        battery: String,
-        batteryKeterangan: String,
-        uploadPhoto: String,
-        overallCondition: String,
-        generatorSafeToOperate: String,
-        inspectorSign: String,
-        weekMaintenanceByMem: String,
+        lockEngine: RequestBody,
+        lockEngineKeterangan: RequestBody,
+        circuitBreaker: RequestBody,
+        circuitBreakerKeterangan: RequestBody,
+        fuelGenerator: RequestBody,
+        oilGeneratorLevel: RequestBody,
+        oilGeneratorLevelKeterangan: RequestBody,
+        oilGeneratorColor: RequestBody,
+        oilGeneratorColorKeterangan: RequestBody,
+        radiatorWater: RequestBody,
+        fuelPump: RequestBody,
+        voltmeterBR: RequestBody,
+        voltmeterYB: RequestBody,
+        voltmeterRY: RequestBody,
+        voltmeterRN: RequestBody,
+        voltmeterYN: RequestBody,
+        voltmeterBN: RequestBody,
+        voltmeterKeterangan: RequestBody,
+        ammeterBR: RequestBody,
+        ammeterYB: RequestBody,
+        ammeterRY: RequestBody,
+        ammeterRN: RequestBody,
+        ammeterYN: RequestBody,
+        ammeterBN: RequestBody,
+        ammeterKeterangan: RequestBody,
+        batteryCharger: RequestBody,
+        batteryChargerBR: RequestBody,
+        batteryChargerYB: RequestBody,
+        batteryChargerRY: RequestBody,
+        batteryChargerRN: RequestBody,
+        batteryChargerYN: RequestBody,
+        batteryChargerBN: RequestBody,
+        batteryChargerKeterangan: RequestBody,
+        dutySelectorBR: RequestBody,
+        dutySelectorYB: RequestBody,
+        dutySelectorRY: RequestBody,
+        dutySelectorRN: RequestBody,
+        dutySelectorYN: RequestBody,
+        dutySelectorBN: RequestBody,
+        dutySelectorKeterangan: RequestBody,
+        ecuCondition: RequestBody,
+        ecuDescription: RequestBody,
+        battery: RequestBody,
+        batteryKeterangan: RequestBody,
+        uploadPhoto: MultipartBody.Part,
+        overallCondition: RequestBody,
+        generatorSafeToOperate: RequestBody,
+        inspectorSign: MultipartBody.Part,
+        weekMaintenanceByMem: RequestBody,
+        reportPdf: MultipartBody.Part,
         fkUserReportId: Int,
         fkGeneratorReportId: Int,
     ): Results<CreateReportResponse> {
         return try {
-            val response = apiServiceGENST.createReport("Bearer $token",
-                lockEngine, lockEngineKeterangan, circuitBreaker, circuitBreakerKeterangan,
-                fuelGenerator, oilGeneratorLevel, oilGeneratorLevelKeterangan, oilGeneratorColor,
-                oilGeneratorColorKeterangan, radiatorWater, fuelPump,
-                voltmeterBR, voltmeterYB, voltmeterRY, voltmeterRN, voltmeterYN, voltmeterBN, voltmeterKeterangan,
-                ammeterBR, ammeterYB, ammeterRY, ammeterRN, ammeterYN, ammeterBN, ammeterKeterangan,
-                batteryCharger, batteryChargerBR, batteryChargerYB, batteryChargerRY, batteryChargerRN,
-                batteryChargerYN, batteryChargerBN, batteryChargerKeterangan,
-                ECU, battery, batteryKeterangan,
-                uploadPhoto, overallCondition, generatorSafeToOperate, inspectorSign,
-                weekMaintenanceByMem, fkUserReportId, fkGeneratorReportId)
+            val response = apiServiceGENST.createReport(
+                "Bearer $token",
+                lockEngine,
+                lockEngineKeterangan,
+                circuitBreaker,
+                circuitBreakerKeterangan,
+                fuelGenerator,
+                oilGeneratorLevel,
+                oilGeneratorLevelKeterangan,
+                oilGeneratorColor,
+                oilGeneratorColorKeterangan,
+                radiatorWater,
+                fuelPump,
+                voltmeterBR,
+                voltmeterYB,
+                voltmeterRY,
+                voltmeterRN,
+                voltmeterYN,
+                voltmeterBN,
+                voltmeterKeterangan,
+                ammeterBR,
+                ammeterYB,
+                ammeterRY,
+                ammeterRN,
+                ammeterYN,
+                ammeterBN,
+                ammeterKeterangan,
+                batteryCharger,
+                batteryChargerBR,
+                batteryChargerYB,
+                batteryChargerRY,
+                batteryChargerRN,
+                batteryChargerYN,
+                batteryChargerBN,
+                batteryChargerKeterangan,
+                dutySelectorBR,
+                dutySelectorYB,
+                dutySelectorRY,
+                dutySelectorRN,
+                dutySelectorYN,
+                dutySelectorBN,
+                dutySelectorKeterangan,
+                ecuCondition,
+                ecuDescription,
+                battery,
+                batteryKeterangan,
+                uploadPhoto,
+                overallCondition,
+                generatorSafeToOperate,
+                inspectorSign,
+                weekMaintenanceByMem,
+                reportPdf,
+                fkUserReportId,
+                fkGeneratorReportId
+            )
             Results.Success(response)
         } catch (e: Exception) {
             Log.e("Repository", "Error Create Report: ${e.localizedMessage}", e)
-            Results.Error(e.message?: "Unknown error occured")
+            Results.Error(e.message ?: "Unknown error occurred")
         }
     }
 
-    companion object  {
+    companion object {
         @Volatile
-        private var instance:Repository? = null
+        private var instance: Repository? = null
         fun getInstance(
             userPreference: UserPreference,
             apiServiceGENST: ServiceApi,

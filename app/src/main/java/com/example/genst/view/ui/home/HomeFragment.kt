@@ -31,27 +31,32 @@ class HomeFragment : Fragment() {
 
         binding.ivGensetPerkinsPs.setOnClickListener {
             val intent = Intent(activity, InspeksiActivity::class.java)
-            intent.putExtra("GENSET_ID", 1)
+            intent.putExtra(InspeksiActivity.GENERATOR_ID, 1)
+            intent.putExtra(InspeksiActivity.GENERATOR_NAME, "GE0020 - Perkins")
             startActivity(intent)
         }
 
         binding.ivGensetCAT.setOnClickListener {
             val intent = Intent(activity, InspeksiActivity::class.java)
-            intent.putExtra("GENSET_ID", 2)
+            intent.putExtra(InspeksiActivity.GENERATOR_ID, 2)
+            intent.putExtra(InspeksiActivity.GENERATOR_NAME, "GE0078 - Caterpilar")
             startActivity(intent)
         }
 
         binding.ivGensetPerkinsAs.setOnClickListener {
             val intent = Intent(activity, InspeksiActivity::class.java)
-            intent.putExtra("GENSET_ID", 3)
+            intent.putExtra(InspeksiActivity.GENERATOR_ID, 3)
+            intent.putExtra(InspeksiActivity.GENERATOR_NAME, "GE0082 - Perkins")
             startActivity(intent)
         }
 
         binding.ivGensetWilson.setOnClickListener {
             val intent = Intent(activity, InspeksiActivity::class.java)
-            intent.putExtra("GENSET_ID", 4)
+            intent.putExtra(InspeksiActivity.GENERATOR_ID, 4)
+            intent.putExtra(InspeksiActivity.GENERATOR_NAME, "GE0051 - Wilson")
             startActivity(intent)
         }
+
         binding.notificationIcon.setOnClickListener {
             val intent = Intent(activity, NotificationActivity::class.java)
             startActivity(intent)

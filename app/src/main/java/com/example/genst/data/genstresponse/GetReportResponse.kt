@@ -1,10 +1,8 @@
 package com.example.genst.data.genstresponse
 
-import android.health.connect.datatypes.units.Power
 import com.google.gson.annotations.SerializedName
 
 data class ReportItem(
-
 	@field:SerializedName("inspector_name")
 	val inspectorName: String? = null,
 
@@ -16,6 +14,9 @@ data class ReportItem(
 
 	@field:SerializedName("report_date")
 	val reportDate: String? = null,
+
+	@field:SerializedName("report_pdf_url")
+	val reportPdfUrl: String? = null
 )
 
 data class GetReportResponse(

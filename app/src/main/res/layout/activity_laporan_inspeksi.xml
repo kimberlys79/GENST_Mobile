@@ -1,1481 +1,1739 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/pdf_layout_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#FFFFFF"
-    tools:context=".view.ui.laporaninspeksi.LaporanActivity">
+    android:padding="16dp"
+    android:orientation="vertical">
 
-    <ScrollView
-        android:id="@+id/sv_laporan_inspeksi"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!-- HEADER -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_title_laporan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="# Laporan"
-                android:textSize="20sp"
-                android:textColor="#000000"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
             <TextView
                 android:id="@+id/tv_inspektur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Inspektur : %s"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title_laporan" />
+                android:layout_marginBottom="4dp"
+                android:text="@string/pdf_inspektur"
+                android:textSize="16px"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                tools:ignore="SmallSp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/tv_tglWeek"
+                android:id="@+id/tv_tanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tanggal &amp; Week : %s"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_inspektur"/>
-
+                android:text="@string/pdf_tanggal"
+                android:layout_gravity="top|end"
+                android:textSize="16px"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <TextView
-                android:id="@+id/tv_genset"
+                android:id="@+id/tvGenerator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Genset : %s"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_tglWeek"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <TextView
-                android:id="@+id/tv_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Item Inspeksi"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                app:layout_constraintTop_toBottomOf="@id/tv_genset"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
-            <TableLayout
-                android:id="@+id/tl_item_inspeksi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="15dp"
-                android:orientation="vertical"
-                tools:ignore="MissingConstraints"
-                app:layout_constraintTop_toBottomOf="@id/tv_item"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <TableRow>
-                    <TextView
-                        android:id="@+id/tv_nomor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="No"
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:id="@+id/tv_item_laporan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Item"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="90dp"
-                        android:text="Status"
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:id="@+id/tv_keterangan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Keterangan"
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:id="@+id/nomor_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1."
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:id="@+id/tv_lockEng"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lock Egnine"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_status_lockEng"
-                        android:layout_width="32dp"
-                        android:layout_height="match_parent"
-                        android:layout_column="1"
-                        android:layout_marginStart="90dp"
-                        android:text=""
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:id="@+id/tv_keterangan_lockEng"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:id="@+id/tv_nomor_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2."
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:id="@+id/tv_cirBreak"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Circuit Breaker"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_status_cirBreak"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_keterangan_cirBreak"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:id="@+id/tv_nomor_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3."
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:id="@+id/tv_fuelGen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fuel Generator"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_status_fuelGen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_keterangan_fuelGen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:id="@+id/tv_nomor_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="4."
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:id="@+id/tv_oilGen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Oil Generator"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:id="@+id/tv_poinLevel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:id="@+id/tv_level"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Level"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_statusLevel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_keteranganLevel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:id="@+id/tv_poin_color"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:id="@+id/tv_color"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Color"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_status_color"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_keterangan_color"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:id="@+id/tv_nomor_5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5."
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:id="@+id/tv_radiatorWater"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Radiator Water"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_status_radiatorWater"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_keterangan_radiatorWater"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:id="@+id/tv_nomor_6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="6."
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:id="@+id/tv_fuelPump"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fuel Pump"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_status_fuelPump"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_keterangan_fuelPump"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:id="@+id/tv_nomor_7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="7."
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:id="@+id/tv_voltmeter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Voltmeter"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_status_voltmeter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-                </TableRow>
-
-               <TableRow>
-                   <TextView
-                       android:id="@+id/tv_brVolt"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:layout_marginStart="10dp"
-                       android:text="BR"
-                       android:textAlignment="center"
-                       android:textColor="#000000" />
-
-                   <TextView
-                       android:id="@+id/tv_status_brVolt"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text=""
-                       android:textColor="#000000"
-                       android:layout_marginStart="90dp" />
-               </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="YB"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RY"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RN"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="YN"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BN"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="viewEnd"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="8. "
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Duty Selector"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BR"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-
-                </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="YB"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RY"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RN"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="YN"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BN"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="9. "
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ammeter"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BR"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="YB"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RY"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RN"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="YN"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BN"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10."
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Battery Charger"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BR"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="YB"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RY"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RN"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="YN"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BN"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10. "
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Battery Charger"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BR"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="YB"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RY"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RN"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="YN"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BN"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-                </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="11."
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ECU"
-                        android:textColor="#000000"
-                        android:layout_marginStart="10dp"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="12"
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RN"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="90dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#000000"
-                        android:layout_marginStart="50dp"/>
-                </TableRow>
-
-            </TableLayout>
-
-            <TableLayout
-                android:id="@+id/tl_catatan_tambahan"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:stretchColumns="*"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tl_item_inspeksi"
-                tools:ignore="MissingConstraints">
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_span="2"
-                        android:text="Catatan Tambahan"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:textStyle="bold" />
-                </TableRow>
-
-                <TableRow
+                android:layout_marginBottom="4dp"
+                android:text="@string/generator_code_name"
+                android:textSize="16px"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
+
+        <!-- EMERGENCY CONTROL PANEL -->
+        <TextView
+            android:id="@+id/tvECP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:text="@string/pdf_emergency_control_panel"
+            android:textSize="16px"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            tools:ignore="SmallSp" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:padding="1dp"
+            android:stretchColumns="1,2">
+
+            <!-- Header Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvItemInspeksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_grey"
+                    android:padding="1dp"
+                    android:text="Item Inspeksi"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_grey"
+                    android:padding="1dp"
+                    android:text="Status"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvKeterangan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_grey"
+                    android:padding="1dp"
+                    android:text="Keterangan"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+            </TableRow>
+
+            <!-- Lock Engine Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvLockEngine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Lock Engine"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvLockEngCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="ON"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvLockEngDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Bisa nyala"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+            </TableRow>
+
+            <!-- Circuit Breaker Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvCircBreaker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Circuit Breaker"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvCircBreakerCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="ON"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvCircBreakerDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Bisa nyala"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+            </TableRow>
+
+            <!-- Fuel Generator Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvFuelGenerator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Fuel Generator"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvFuelGeneratorCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Medium"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+            </TableRow>
+
+            <!-- Oil Generator Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvOilGenerator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:background="@drawable/border_cell_grey"
+                    android:gravity="center"
+                    android:padding="1dp"
+                    android:text="Oil Generator"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+            </TableRow>
+
+            <!-- Oil Generator Level Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvLevelGenerator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Level"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvOilGeneratorLvlCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Medium"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvOilGeneratorLvlDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Sisa Setengah"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+            </TableRow>
+
+            <!-- Oil Generator Color Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvColorGenerator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Color"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvOilGeneratorClrCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Pale"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvOilGeneratorClrDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Sudah diganti baru"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+            </TableRow>
+
+            <!-- Radiator Water Color Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvRadiatorWater"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Radiator Water"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRadiatorWaterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Medium"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+            </TableRow>
+
+            <!-- Voltmeter Color Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvFuelPump"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Fuel Pump"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvFuelPumpStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Auto"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+            </TableRow>
+
+            <!-- Oil Generator Row -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:background="@drawable/border_cell_grey"
+                    android:gravity="center"
+                    android:padding="1dp"
+                    android:text="Voltmeter"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+            </TableRow>
+
+            <!-- Row BR -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tv_brVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="BR"
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvbrVoltmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="150"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBrVoltmeterDesc"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="Sudah sesuai"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+            </TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_span="2"
-                        android:background="@android:drawable/editbox_background"
-                        android:text="" />
-                </TableRow>
+            <!-- Row YB -->
+            <TableRow>
 
-            </TableLayout>
+                <TextView
+                    android:id="@+id/tvYbVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:textStyle="normal"
+                    android:text="YB"
+                    android:textSize="13px"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    tools:ignore="RtlCompat,SmallSp" />
 
-            <TextView
-                android:id="@+id/tv_unggah_foto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Unggahan Foto"
-                android:textColor="#000000"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tl_catatan_tambahan"
-                app:layout_constraintStart_toStartOf="parent"/>
+                <TextView
+                    android:id="@+id/tvYbVoltmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
 
-            <TextView
-                android:id="@+id/tv_kondisi_keseluruhan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kondisi Keseluruhan"
-                android:textColor="#000000"
-                android:layout_marginStart="25dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_unggah_foto"
-                app:layout_constraintStart_toStartOf="parent"/>
+                <TextView
+                    android:id="@+id/tvYbVoltmeterDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
 
-            <TextView
-                android:id="@+id/tv_genset_beroperasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Genset aman\n untuk beroperasi"
-                android:textColor="#000000"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_kondisi_keseluruhan"
-                app:layout_constraintStart_toStartOf="parent"/>
+            <!-- Row RY -->
+            <TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TTD Inspektur"
-                android:textColor="#000000"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_genset_beroperasi"
-                app:layout_constraintStart_toStartOf="parent"/>
+                <TextView
+                    android:id="@+id/tv_RyVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:textStyle="normal"
+                    android:text="RY"
+                    android:textSize="13px"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
 
+                <TextView
+                    android:id="@+id/tvRyVoltmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
 
+                <TextView
+                    android:id="@+id/tvRyVoltmeterDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
 
+            <!-- Row RN -->
+            <TableRow>
 
+                <TextView
+                    android:id="@+id/tvRnVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textStyle="normal"
+                    android:padding="1dp"
+                    android:text="RN"
+                    android:textSize="13px"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
 
+                <TextView
+                    android:id="@+id/tvRnVoltmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                <TextView
+                    android:id="@+id/tvRnVoltmeterDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
 
+            <!-- Row YN -->
+            <TableRow>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tvYnVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textStyle="normal"
+                    android:padding="1dp"
+                    android:text="YN"
+                    android:textSize="13px"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYnVoltmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYnVoltmeterDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <!-- Row BN -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvBnVoltmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textStyle="normal"
+                    android:padding="1dp"
+                    android:text="BN"
+                    android:textSize="13px"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBnVOltmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvbnVoltmeterDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <!-- Duty Selector Row -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvDutySelector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:background="@drawable/border_cell_grey"
+                    android:gravity="center"
+                    android:padding="1dp"
+                    android:text="Duty Selector"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="bold"
+                    tools:ignore="SmallSp"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <!-- Row BR -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvBrDutySlc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="BR"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBrDutySlcCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="150"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBrDutySlcDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="Sudah sesuai"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+            </TableRow>
+
+            <!-- Row YB -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvYbDutySlc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="YB"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYbDutySlcCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYbDutySlcDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px" />
+            </TableRow>
+
+            <!-- Row RY -->
+            <TableRow tools:ignore="RtlCompat">
+
+                <TextView
+                    android:id="@+id/tvRyDutySlc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="RY"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRyDutySlcCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRyDutySlcDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <!-- Row RN -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvRnDutySlc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="RN"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRnDutySlcCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRnDutySlcDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <!-- Row YN -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvYnDutySlc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="YN"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYnDutySlcCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYnDutySlcDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <!-- Row BN -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvBnDutySlc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="BN"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBnDutySlcCOd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBnDutySlcDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <!-- Ammeter Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:background="@drawable/border_cell_grey"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="Ammeter"
+                    android:textSize="13px"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+            </TableRow>
+
+            <!-- Row BR -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvBrAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="BR"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBrAmmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="150"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBrAmmeterDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="Sudah sesuai"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+            </TableRow>
+
+            <!-- Row YB -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvYbAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="YB"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYbAmmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYbAmmeterDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <!-- Row RY -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvRyAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="RY"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRyAmmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRyAmmeterDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"/>
+            </TableRow>
+
+            <!-- Row RN -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvRnAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="RN"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRnAmmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRnAmmeterDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <!-- Row YN -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvYnAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="YN"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYnAmmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYnAmmeterDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <!-- Row BN -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvBnAmmeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="BN"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBnAmmeterCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:text="-"
+                    android:textStyle="normal"
+                    android:padding="1dp"
+                    android:textSize="13px"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBnAmmeterDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <!-- Battery Charger  Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvBatteryCharger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_grey"
+                    android:gravity="center"
+                    android:padding="1dp"
+                    android:text="Battery Charger "
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBatteryChargCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="ON"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBatteryChargerDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="Sudah sesuai"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+            </TableRow>
+
+            <!-- Row BR -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvBrBattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="BR"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBrBattChargCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="150"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBrBattChargDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text=""
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+            </TableRow>
+
+            <!-- Row YB -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvYbBattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="YB"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYbBattChargCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYbBattChargDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <!-- Row RY -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvRyBattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="RY"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRyBattChargCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRyBattChargDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <!-- Row RN -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvRnBattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="RN"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRnBattChargCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRnBattChargDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <!-- Row YN -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvYnBattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="YN"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYnBattChargCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvYnBattChargDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <!-- Row BN -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvBnBattCharg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="BN"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBnBattChargCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:padding="1dp"
+                    android:text="-"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvBnBattChargDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="13px"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <!-- ECU  Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvEcu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/border_cell_grey"
+                    android:padding="1dp"
+                    android:text="ECU"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvEcuCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Yes"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvEcuDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Bagus"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+            </TableRow>
+
+            <!-- Unggah Foto Level Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvUnggahFoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:padding="1dp"
+                    android:text="Unggah Foto"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <ImageView
+                    android:id="@+id/ivUnggahFotoCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_span="2"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+            </TableRow>
+
+            <!-- Kondisi Keseluruhan Level Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvKondisiKeseluruhan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Kondisi Keseluruhan"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvKondisiKeseluruhanCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Bagus"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+            </TableRow>
+
+            <!-- Aman untuk Beroperasi Level Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvAmanuntukBeroperasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Aman untuk beroperasi"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvAmanuntukBeroperasiCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="Yes"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+            </TableRow>
+
+            <!-- TTD Inspektur Level Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvTtdInspektur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_cell_white"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:padding="1dp"
+                    android:text="TTD Inspektur"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+
+                <ImageView
+                    android:id="@+id/ivTtdInspekturCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_span="2"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:textAlignment="center"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+            </TableRow>
+
+            <!-- Maintenance by MEM  Row -->
+            <TableRow android:background="#DDDDDD">
+
+                <TextView
+                    android:id="@+id/tvMaintenanceMeM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/border_cell_grey"
+                    android:padding="1dp"
+                    android:text="Maintenance by MEM"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlCompat,SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvMaintenanceMemCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:background="@drawable/border_cell_white"
+                    android:padding="1dp"
+                    android:text="25"
+                    android:textAlignment="center"
+                    android:textSize="13px"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
+            </TableRow>
+
+        </TableLayout>
+
+</LinearLayout>

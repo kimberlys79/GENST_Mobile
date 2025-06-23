@@ -50,7 +50,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
@@ -63,26 +63,24 @@
                 <TextView
                     android:id="@+id/tv_inspektur"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="15dp"
                     android:text="Inspektur"
                     android:textColor="#003B46"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <EditText
                     android:id="@+id/et_inspektur"
                     android:layout_width="150dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="75dp"
-                    android:layout_marginTop="14dp"
-                    android:background="#C4DFE6"
-                    android:hint="Inspektur"
-                    android:textColor="#003B46"
+                    android:layout_marginTop="10dp"
+                    android:hint="Nama Inspektur"
                     app:layout_constraintStart_toEndOf="@id/tv_inspektur"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/tv_tglWeek"
@@ -106,7 +104,7 @@
                     android:hint="Tanggal &amp; Week"
                     android:textColor="#003B46"
                     app:layout_constraintStart_toEndOf="@id/tv_tglWeek"
-                    app:layout_constraintTop_toBottomOf="@id/et_inspektur" />
+                    app:layout_constraintTop_toBottomOf="@id/et_inspektur"/>
 
                 <DatePicker
                     android:layout_width="30dp"
@@ -115,7 +113,7 @@
                     android:background="#007F7B"
                     android:calendarViewShown="true"
                     app:layout_constraintStart_toEndOf="@id/et_tgl"
-                    app:layout_constraintTop_toBottomOf="@id/et_inspektur" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/tv_ecp"
@@ -495,19 +493,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="11dp"
                     android:text="BR"
                     android:textColor="#003B46"
                     android:textSize="15sp"
+                    android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_voltmeter" />
 
                 <Spinner
                     android:id="@+id/spinner_brVoltmeter"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
-                    android:layout_marginTop="46.5dp"
+                    android:layout_marginTop="37dp"
                     android:background="#C4DFE6"
                     android:spinnerMode="dropdown"
                     app:layout_constraintStart_toEndOf="@id/tv_brVoltmeter"
@@ -519,7 +518,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="18dp"
                     android:text="YB"
                     android:textColor="#003B46"
                     android:textSize="15sp"
@@ -529,7 +528,7 @@
                 <Spinner
                     android:id="@+id/spinner_ybVoltmeter"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
                     android:layout_marginTop="13dp"
                     android:background="#C4DFE6"
@@ -542,7 +541,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="18dp"
                     android:text="RY"
                     android:textColor="#003B46"
                     android:textSize="15sp"
@@ -552,7 +551,7 @@
                 <Spinner
                     android:id="@+id/spinner_ryVoltmeter"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
                     android:layout_marginTop="13dp"
                     android:background="#C4DFE6"
@@ -565,7 +564,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="17dp"
                     android:text="RN"
                     android:textColor="#003B46"
                     android:textSize="15sp"
@@ -575,7 +574,7 @@
                 <Spinner
                     android:id="@+id/spinner_rnVoltmeter"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
                     android:layout_marginTop="13dp"
                     android:background="#C4DFE6"
@@ -587,7 +586,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="17dp"
                     android:text="YN"
                     android:textColor="#003B46"
                     android:textSize="15sp"
@@ -597,7 +596,7 @@
                 <Spinner
                     android:id="@+id/spinner_ynVoltmeter"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
                     android:layout_marginTop="13dp"
                     android:background="#C4DFE6"
@@ -610,7 +609,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="17dp"
                     android:text="BN"
                     android:textColor="#003B46"
                     android:textSize="15sp"
@@ -620,7 +619,7 @@
                 <Spinner
                     android:id="@+id/spinner_bnVoltmeter"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
                     android:layout_marginTop="13dp"
                     android:background="#C4DFE6"
@@ -656,7 +655,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="22.5dp"
                     android:text="BR"
                     android:textColor="#003B46"
                     android:textSize="15sp"
@@ -664,9 +663,9 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_dutySelector" />
 
                 <Spinner
-                    android:id="@+id/spinner_br_dutySelector"
+                    android:id="@+id/spinner_brDutySelector"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
                     android:layout_marginTop="54.5dp"
                     android:background="#C4DFE6"
@@ -679,7 +678,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="19dp"
                     android:text="YB"
                     android:textColor="#003B46"
                     android:textSize="15sp"
@@ -687,22 +686,22 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_br_dutS" />
 
                 <Spinner
-                    android:id="@+id/spinner_yb_dutS"
+                    android:id="@+id/spinner_ybDutySelector"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
                     android:layout_marginTop="13dp"
                     android:background="#C4DFE6"
                     android:spinnerMode="dropdown"
                     app:layout_constraintStart_toEndOf="@id/tv_yb_dutS"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_br_dutySelector" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_brDutySelector" />
 
                 <TextView
                     android:id="@+id/tv_ry_dutS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="17.5dp"
                     android:text="RY"
                     android:textColor="#003B46"
                     android:textSize="15sp"
@@ -710,22 +709,22 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_yb_dutS" />
 
                 <Spinner
-                    android:id="@+id/spinner_ry_dutS"
+                    android:id="@+id/spinner_ryDutySelector"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
                     android:layout_marginTop="13dp"
                     android:background="#C4DFE6"
                     android:spinnerMode="dropdown"
                     app:layout_constraintStart_toEndOf="@id/tv_ry_dutS"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_yb_dutS" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ybDutySelector" />
 
                 <TextView
                     android:id="@+id/tv_rn_dutS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="RN"
                     android:textColor="#003B46"
                     android:textSize="15sp"
@@ -733,21 +732,21 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_ry_dutS" />
 
                 <Spinner
-                    android:id="@+id/spinner_rn_dutS"
+                    android:id="@+id/spinner_rnDutySelector"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
                     android:layout_marginTop="13dp"
                     android:background="#C4DFE6"
                     app:layout_constraintStart_toEndOf="@+id/tv_rn_dutS"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_ry_dutS" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ryDutySelector" />
 
                 <TextView
                     android:id="@+id/tv_yn_dutS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="19dp"
                     android:text="YN"
                     android:textColor="#003B46"
                     android:textSize="15sp"
@@ -755,22 +754,22 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_rn_dutS" />
 
                 <Spinner
-                    android:id="@+id/spinner_yn_dutS"
+                    android:id="@+id/spinner_ynDutySelector"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
                     android:layout_marginTop="13dp"
                     android:background="#C4DFE6"
                     android:spinnerMode="dropdown"
                     app:layout_constraintStart_toEndOf="@id/tv_yn_dutS"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_rn_dutS" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_rnDutySelector" />
 
                 <TextView
                     android:id="@+id/tv_bn_dutS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="19dp"
                     android:text="BN"
                     android:textColor="#003B46"
                     android:textSize="15sp"
@@ -778,15 +777,15 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_yn_dutS" />
 
                 <Spinner
-                    android:id="@+id/spinner_bn_dutS"
+                    android:id="@+id/spinner_bnDutySelector"
                     android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="95dp"
                     android:layout_marginTop="13dp"
                     android:background="#C4DFE6"
                     android:spinnerMode="dropdown"
                     app:layout_constraintStart_toEndOf="@id/tv_bn_dutS"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_yn_dutS" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ynDutySelector" />
 
                 <EditText
                     android:id="@+id/et_keterangan_dutySelector"
@@ -797,7 +796,7 @@
                     android:background="#C4DFE6"
                     android:hint="Keterangan"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_bn_dutS" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_bnDutySelector" />
 
                 <TextView
                     android:id="@+id/tv_ammeter"
@@ -939,7 +938,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_ynAmmeter" />
 
                 <Spinner
-                    android:id="@+id/et_bnAmmeter"
+                    android:id="@+id/spinner_bnAmmeter"
                     android:layout_width="100dp"
                     android:layout_height="18dp"
                     android:layout_marginStart="93dp"
@@ -958,7 +957,7 @@
                     android:background="#C4DFE6"
                     android:hint="Keterangan"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_bnAmmeter" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_bnAmmeter" />
 
                 <TextView
                     android:id="@+id/tv_battCharg"
@@ -1012,7 +1011,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_battCharg" />
 
                 <Spinner
-                    android:id="@+id/spinner_brbattCharg"
+                    android:id="@+id/spinner_brBatteryCharger"
                     android:layout_width="100dp"
                     android:layout_height="18dp"
                     android:layout_marginStart="95dp"
@@ -1035,7 +1034,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_brbattCharg" />
 
                 <Spinner
-                    android:id="@+id/spinner_ybbattCharg"
+                    android:id="@+id/spinner_ybBatteryCharger"
                     android:layout_width="100dp"
                     android:layout_height="18dp"
                     android:layout_marginStart="95dp"
@@ -1043,7 +1042,7 @@
                     android:background="#C4DFE6"
                     android:spinnerMode="dropdown"
                     app:layout_constraintStart_toEndOf="@id/tv_ybbattCharg"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_brbattCharg" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_brBatteryCharger" />
 
                 <TextView
                     android:id="@+id/tv_rybattCharg"
@@ -1058,7 +1057,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_ybbattCharg" />
 
                 <Spinner
-                    android:id="@+id/spinner_rybattCharg"
+                    android:id="@+id/spinner_ryBatteryCharger"
                     android:layout_width="100dp"
                     android:layout_height="18dp"
                     android:layout_marginStart="95dp"
@@ -1066,7 +1065,7 @@
                     android:background="#C4DFE6"
                     android:spinnerMode="dropdown"
                     app:layout_constraintStart_toEndOf="@id/tv_rybattCharg"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_ybbattCharg" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ybBatteryCharger" />
 
                 <TextView
                     android:id="@+id/tv_rnbattCharg"
@@ -1081,14 +1080,14 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_rybattCharg" />
 
                 <Spinner
-                    android:id="@+id/spinner_rnbattCharg"
+                    android:id="@+id/spinner_rnBatteryCharger"
                     android:layout_width="100dp"
                     android:layout_height="18dp"
                     android:layout_marginStart="93dp"
                     android:layout_marginTop="10dp"
                     android:background="#C4DFE6"
                     app:layout_constraintStart_toEndOf="@+id/tv_rnbattCharg"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_rybattCharg" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ryBatteryCharger" />
 
                 <TextView
                     android:id="@+id/tv_ynbattCharg"
@@ -1103,7 +1102,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_rnbattCharg" />
 
                 <Spinner
-                    android:id="@+id/spinner_ynbattCharg"
+                    android:id="@+id/spinner_ynBatteryCharger"
                     android:layout_width="100dp"
                     android:layout_height="18dp"
                     android:layout_marginStart="93dp"
@@ -1111,7 +1110,7 @@
                     android:background="#C4DFE6"
                     android:spinnerMode="dropdown"
                     app:layout_constraintStart_toEndOf="@id/tv_ynbattCharg"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_rnbattCharg" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_rnBatteryCharger" />
 
                 <TextView
                     android:id="@+id/tv_bnbattCharg"
@@ -1126,7 +1125,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_ynbattCharg" />
 
                 <Spinner
-                    android:id="@+id/spinner_bnbattCharg"
+                    android:id="@+id/spinner_bnBatteryCharger"
                     android:layout_width="100dp"
                     android:layout_height="18dp"
                     android:layout_marginStart="93dp"
@@ -1134,7 +1133,7 @@
                     android:background="#C4DFE6"
                     android:spinnerMode="dropdown"
                     app:layout_constraintStart_toEndOf="@id/tv_bnbattCharg"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_ynbattCharg" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_ynBatteryCharger" />
 
                 <EditText
                     android:id="@+id/et_keterangan_battCharg"
@@ -1145,7 +1144,7 @@
                     android:background="#C4DFE6"
                     android:hint="Keterangan"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_bnbattCharg" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_bnBatteryCharger" />
 
                 <TextView
                     android:id="@+id/tv_ecu"
@@ -1163,24 +1162,23 @@
                     android:id="@+id/sp_ecu"
                     android:layout_width="100dp"
                     android:layout_height="18dp"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginStart="104dp"
                     android:background="#C4DFE6"
                     android:spinnerMode="dropdown"
                     app:layout_constraintStart_toEndOf="@+id/tv_ecu"
-                    app:layout_constraintTop_toBottomOf="@id/spinner_bnbattCharg" />
+                    app:layout_constraintTop_toTopOf="@id/tv_ecu"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_ecu"/>
 
                 <EditText
                     android:id="@+id/et_ecu"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="45dp"
+                    android:layout_marginTop="16dp"
                     android:background="#C4DFE6"
                     android:hint="Keterangan"
                     android:textColor="#003B46"
-                    app:layout_constraintStart_toEndOf="@+id/sp_ecu"
-                    app:layout_constraintTop_toBottomOf="@+id/et_keterangan_battCharg" />
+                    app:layout_constraintStart_toStartOf="@id/tv_ecu"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_ecu" />
 
                 <TextView
                     android:id="@+id/tv_battery"
@@ -1192,7 +1190,7 @@
                     android:textColor="#003B46"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_ecu" />
+                    app:layout_constraintTop_toBottomOf="@id/et_ecu" />
 
                 <RadioGroup
                     android:id="@+id/rg_battery"
@@ -1202,7 +1200,8 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toEndOf="@id/tv_battery"
-                    app:layout_constraintTop_toBottomOf="@id/sp_ecu">
+                    app:layout_constraintTop_toTopOf="@id/tv_battery"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_battery">
 
                     <RadioButton
                         android:layout_width="wrap_content"
@@ -1224,12 +1223,12 @@
                     android:layout_width="245dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="25dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:background="#C4DFE6"
                     android:hint="Catatan"
                     android:textColor="#003B46"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rg_battery" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_battery" />
 
                 <!-- Layout for Upload Section -->
                 <TextView
@@ -1292,12 +1291,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="16dp"
                     android:text="Genset aman\nuntuk beroperasi"
                     android:textColor="#003B46"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/sp_kondisi" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_kondisi" />
 
                 <RadioGroup
                     android:id="@+id/rg_genset_beroperasi"
@@ -1307,7 +1306,8 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toEndOf="@id/tv_genset_beroperasi"
-                    app:layout_constraintTop_toBottomOf="@id/sp_kondisi">
+                    app:layout_constraintTop_toTopOf="@+id/tv_genset_beroperasi"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_genset_beroperasi">
 
                     <RadioButton
                         android:layout_width="wrap_content"

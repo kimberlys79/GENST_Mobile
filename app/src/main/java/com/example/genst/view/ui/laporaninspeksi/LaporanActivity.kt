@@ -54,10 +54,7 @@ class LaporanActivity : AppCompatActivity() {
                 is Results.Success -> {
                     val laporan = result.data.reportDetail?.firstOrNull() ?: return@observe
                     binding.tvInspektur.text = laporan.fkUserReportId.toString()
-                    binding.tvTglWeek.text = laporan.dateTime.toString()
-                    binding.tvGenset.text = laporan.fkGeneratorReportId.toString()
-                    // Tampilkan detail ke UI
-                    // Contoh: binding.tvJudul.text = laporan.data.title
+                    binding.tvTanggal.text = laporan.dateTime.toString()
                 }
 
                 is Results.Error -> {
